@@ -11,7 +11,7 @@ export default function SignIn() {
   const [error, setError] = useState(null);
   const router = useRouter();
 
-  const handleSignIn = async (e) => {
+  const handleSignIn = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { error } = await supabase.auth.signInWithPassword({
       email,
