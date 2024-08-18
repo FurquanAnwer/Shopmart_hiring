@@ -1,0 +1,149 @@
+/* ProductCard.module.css */
+
+/* ProductCard.module.css */
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0070f3;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  font-size: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  background-color: #f6f07369;
+  border-radius: 10px;
+  box-shadow: 0 10px 8px rgba(13, 13, 13, 0.1);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  height: 30rem;
+  position: relative; /* Needed for the absolute positioning of the button */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+  object-fit: cover; /* Ensures the image covers its container */
+}
+
+.productTitle {
+  font-size: 1.25rem;
+  margin: 15px 0;
+}
+
+.productPriceRating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.productPrice {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.productRating {
+  display: flex;
+}
+
+.starFilled {
+  color: #f5c518;
+}
+
+.starEmpty {
+  color: #ccc;
+}
+
+.addToCartButton {
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: auto; /* Pushes the button to the bottom */
+}
+
+.addToCartButton:hover {
+  background-color: #005bb5;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  border-top: 8px solid #0070f3;
+  border-bottom: 8px solid #0070f3;
+  height: 70%; /* Covers 70% of the screen height */
+  max-height: 70vh; /* Ensures the modal does not exceed 70% of the viewport height */
+  overflow-y: auto; /* Adds a scroll if the content exceeds the modal height */
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.closeButton::before {
+  content: '\2716'; /* Unicode for the close (X) icon */
+  font-size: 1.5rem;
+  color: #0070f3;
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.productDescription {
+  font-size: 1rem;
+  margin: 15px 0;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .productDescription {
+    font-size: 1.1rem;
+  }
+}
