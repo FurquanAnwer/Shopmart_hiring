@@ -3,7 +3,22 @@ import styles from './ProductCard.module.css';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cartSlice';
 
-const ProductCard = ({ product }) => {
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  description: string;
+  rating: {
+    rate: number;
+  };
+}
+
+interface ProductCardProps {
+  product: Product;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
@@ -12,7 +27,7 @@ const ProductCard = ({ product }) => {
     setIsExpanded(!isExpanded);
   };
 
-  const renderStars = (rating) => {
+  const renderStars = (rating: number) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(
@@ -25,13 +40,15 @@ const ProductCard = ({ product }) => {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart({
-      id: product.id,
-      name: product.title,
-      price: product.price,
-      quantity: 1,
-      image: product.image
-    }));
+    dispatch(
+      addToCart({
+        id: String(product.id),
+        name: product.title,
+        price: product.price,
+        quantity: 1,
+        image: product.image,
+      })
+    );
     setShowNotification(true);
     setTimeout(() => setShowNotification(false), 2000); // Hide after 2 seconds
   };
@@ -45,14 +62,12 @@ const ProductCard = ({ product }) => {
           <p className={styles.productPrice}>${product.price}</p>
           <div className={styles.productRating}>{renderStars(product.rating.rate)}</div>
         </div>
-        <button onClick={handleAddToCart} className={styles.addToCartButton}>Add to Cart</button>
+        <button onClick={handleAddToCart} className={styles.addToCartButton}>
+          Add to Cart
+        </button>
       </div>
 
-      {showNotification && (
-        <div className={styles.notification}>
-          Item added to cart!
-        </div>
-      )}
+      {showNotification && <div className={styles.notification}>Item added to cart!</div>}
 
       {isExpanded && (
         <div className={styles.modalOverlay}>
@@ -65,7 +80,9 @@ const ProductCard = ({ product }) => {
               <p className={styles.productPrice}>Price: ${product.price}</p>
               <div className={styles.productRating}>{renderStars(product.rating.rate)}</div>
             </div>
-            <button onClick={handleAddToCart} className={styles.addToCartButton}>Add to Cart</button>
+            <button onClick={handleAddToCart} className={styles.addToCartButton}>
+              Add to Cart
+            </button>
           </div>
         </div>
       )}

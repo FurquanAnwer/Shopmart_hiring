@@ -15,24 +15,24 @@ const CartCount = () => {
     router.push('/cart'); // Adjust the path based on your actual Cart Page route
   };
 
-  const containerStyle = {
+  const containerStyle:React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
   };
 
-  const iconContainerStyle = {
+  const iconContainerStyle:React.CSSProperties = {
     cursor: 'pointer',
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
   };
 
-  const iconStyle = {
+  const iconStyle:React.CSSProperties = {
     fontSize: '30px',
     color: '#00050b',
   };
 
-  const countStyle = {
+  const countStyle:React.CSSProperties = {
     position: 'absolute',
     top: '-10px',
     right: '-10px',

@@ -20,16 +20,17 @@ const CartSummary: React.FC<CartSummaryProps> = ({ total, onCheckout, items }) =
   };
 
   const applyCoupon = () => {
-    if (validCoupons[coupon]) {
-      setDiscount(validCoupons[coupon]);
+    if (validCoupons[coupon as keyof typeof validCoupons]) {
+      setDiscount(validCoupons[coupon as keyof typeof validCoupons]);
       if (!toastShown) {
-        toast.success(`Coupon applied! ${validCoupons[coupon]}% discount`);
+        toast.success(`Coupon applied! ${validCoupons[coupon as keyof typeof validCoupons]}% discount`);
         setToastShown(true);
       }
     } else {
       toast.error('Invalid coupon code');
     }
   };
+  
 
   const handleCheckout = () => {
     if (total - (total * discount) / 100 > 0) {
@@ -91,7 +92,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({ total, onCheckout, items }) =
   );
 };
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   cartSummary: {
     backgroundColor: '#bed8f1',
     padding: '20px',

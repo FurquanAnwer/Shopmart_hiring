@@ -88,22 +88,21 @@ const styles = {
     backgroundColor: '#f9f9f9',
     padding: '15px', // Increased padding for better appearance
     gap: '15px',
-    boxSizing: 'border-box', // Ensures padding and border are included in width
-},
+    boxSizing: 'border-box' as const, // Use 'as const' to enforce allowed values
+  },
 
   cartItemInner: {
     display: 'flex',
     flexDirection: 'row' as const,
     margin: '10px',
     backgroundColor: '#f9f9f9',
-    // border: '1px solid #ddd',
   },
   cartImage: {
     width: '15rem',
     height: '15rem',
     objectFit: 'cover' as const,
     borderRadius: '2px',
-    padding : '5px',
+    padding: '5px',
   },
   cartDetails: {
     flex: 1,

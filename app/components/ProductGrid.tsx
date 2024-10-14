@@ -1,12 +1,24 @@
-// src/components/ProductGrid.js
 "use client"
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '../../utils/api';
 import ProductCard from './ProductCard';
 import styles from './ProductGrid.module.css';
 
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  image: string;
+  description: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}
+
 const ProductGrid = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
