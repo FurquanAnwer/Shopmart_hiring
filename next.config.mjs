@@ -5,6 +5,9 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  images: {
+    domains: ['fakestoreapi.com'], // Add domains for external images here
+  },
 };
 
 export default nextConfig;

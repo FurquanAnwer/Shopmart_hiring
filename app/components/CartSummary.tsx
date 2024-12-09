@@ -1,6 +1,5 @@
-"use client";
 import React, { useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import { FaShoppingCart } from 'react-icons/fa';
 
 interface CartSummaryProps {
   total: number;
@@ -10,160 +9,54 @@ interface CartSummaryProps {
 
 const CartSummary: React.FC<CartSummaryProps> = ({ total, onCheckout, items }) => {
   const [coupon, setCoupon] = useState('');
-  const [discount, setDiscount] = useState(0);
-  const [toastShown, setToastShown] = useState(false);
-
-  const validCoupons = {
-    SAVE10: 10,
-    SAVE20: 20,
-    SAVE30: 30,
-  };
 
   const applyCoupon = () => {
-    if (validCoupons[coupon as keyof typeof validCoupons]) {
-      setDiscount(validCoupons[coupon as keyof typeof validCoupons]);
-      if (!toastShown) {
-        toast.success(`Coupon applied! ${validCoupons[coupon as keyof typeof validCoupons]}% discount`);
-        setToastShown(true);
-      }
-    } else {
-      toast.error('Invalid coupon code');
-    }
+    // Implement coupon logic here
+    console.log('Applying coupon:', coupon);
   };
-  
-
-  const handleCheckout = () => {
-    if (total - (total * discount) / 100 > 0) {
-      onCheckout();
-      toast.success('Successfully checked out!');
-    }
-  };
-
-  const directDiscount = 20;
-  const finalTotal = total - directDiscount - (total * discount) / 100;
 
   return (
-    <div style={styles.cartSummary}>
-      <Toaster />
-      <h2 style={styles.orderSummaryTitle}>Order Summary</h2>
-
-      <div style={styles.billDetails}>
-        <table style={styles.billTable}>
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, index) => (
-              <tr key={index}>
-                <td>{item.name}</td>
-                <td>${item.price.toFixed(2)}</td>
-                <td>{item.quantity}</td>
-                <td>${(item.price * item.quantity).toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="bg-white p-6 rounded-lg shadow">
+      <h2 className="text-2xl font-bold mb-4">Order Summary</h2>
+      <div className="space-y-2 mb-4">
+        {items.map((item, index) => (
+          <div key={index} className="flex justify-between">
+            <span>{item.name} x {item.quantity}</span>
+            <span>${(item.price * item.quantity).toFixed(2)}</span>
+          </div>
+        ))}
       </div>
-
-      <div style={styles.discountSection}>
+      <div className="border-t pt-4 mb-4">
+        <div className="flex justify-between font-semibold">
+          <span>Total</span>
+          <span>${total.toFixed(2)}</span>
+        </div>
+      </div>
+      <div className="mb-4">
         <input
           type="text"
           value={coupon}
           onChange={(e) => setCoupon(e.target.value)}
-          placeholder="Use SAVE10,SAVE20,SAVE30"
-          style={styles.couponInput}
+          placeholder="Enter coupon code"
+          className="w-full p-2 border rounded"
         />
-        <button onClick={applyCoupon} style={styles.applyButton}>Apply</button>
+        <button
+          onClick={applyCoupon}
+          className="mt-2 w-full bg-gray-200 text-gray-800 py-2 rounded hover:bg-gray-300 transition duration-200"
+        >
+          Apply Coupon
+        </button>
       </div>
-
-      <div style={styles.discountDetails}>
-        <h3>Direct Discount: ${directDiscount.toFixed(2)}</h3>
-        <h3>Percentage Discount: {discount}%</h3>
-      </div>
-
-      <h2 style={styles.finalTotal}>Total: ${finalTotal.toFixed(2)}</h2>
-      <button onClick={handleCheckout} style={styles.checkoutButton}>Checkout</button>
+      <button
+        onClick={onCheckout}
+        className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 flex items-center justify-center"
+      >
+        <FaShoppingCart className="mr-2" />
+        Proceed to Checkout
+      </button>
     </div>
   );
 };
 
-const styles: { [key: string]: React.CSSProperties } = {
-  cartSummary: {
-    backgroundColor: '#bed8f1',
-    padding: '20px',
-    borderRadius: '10px',
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-    maxWidth: '500px',
-    margin: '40px auto',
-  },
-  orderSummaryTitle: {
-    fontSize: '50px',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: '20px',
-  },
-  billDetails: {
-    marginBottom: '20px',
-  },
-  billTable: {
-    width: '100%',
-    borderCollapse: 'collapse',
-  },
-  billTableHeaderFooter: {
-    padding: '10px',
-    textAlign: 'left',
-    borderBottom: '1px solid #ccc',
-  },
-  discountSection: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '20px',
-  },
-  couponInput: {
-    flexGrow: 1,
-    padding: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    marginRight: '10px',
-  },
-  applyButton: {
-    padding: '10px 20px',
-    backgroundColor: '#28a745',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
-  discountDetails: {
-    marginTop: '10px',
-    fontSize: '16px',
-    lineHeight: '1.6',
-  },
-  finalTotal: {
-    fontSize: '20px',
-    fontWeight: 'bold',
-    textAlign: 'right',
-    marginTop: '10px',
-  },
-  checkoutButton: {
-    width: '100%',
-    padding: '15px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    marginTop: '20px',
-  },
-  buttonHover: {
-    backgroundColor: '#0056b3',
-  },
-};
-
 export default CartSummary;
+
