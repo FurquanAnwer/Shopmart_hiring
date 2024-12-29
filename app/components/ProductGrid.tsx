@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { fetchProducts } from '../../utils/api'
 import ProductCard from './ProductCard'
-import styles from './ProductGrid.module.css'
 
 interface Product {
   id: number
@@ -34,21 +33,43 @@ const ProductGrid = () => {
     ? products
     : products.filter(product => product.category === selectedCategory)
 
+  const categories = [
+    { id: 'all', name: 'All' },
+    { id: 'electronics', name: 'Electronics' },
+    { id: 'jewelery', name: 'Jewelry' },
+    { id: "men's clothing", name: "Men's Clothing" },
+    { id: "women's clothing", name: "Women's Clothing" },
+  ]
+
   return (
-    <>
-      <div className={`${styles.categoryButtons} flex flex-wrap justify-center gap-2 mb-4`}>
-        <button onClick={() => setSelectedCategory('all')} className="px-4 py-2 bg-blue-500 text-white rounded">All</button>
-        <button onClick={() => setSelectedCategory('electronics')} className="px-4 py-2 bg-blue-500 text-white rounded">Electronics</button>
-        <button onClick={() => setSelectedCategory('jewelery')} className="px-4 py-2 bg-blue-500 text-white rounded">Jewelry</button>
-        <button onClick={() => setSelectedCategory("men's clothing")} className="px-4 py-2 bg-blue-500 text-white rounded">Men's Clothing</button>
-        <button onClick={() => setSelectedCategory("women's clothing")} className="px-4 py-2 bg-blue-500 text-white rounded">Women's Clothing</button>
+    <div className="container mx-auto px-4 m-2">
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => setSelectedCategory(category.id)}
+            className={`
+              px-4 py-2 rounded-full text-m font-medium
+              transition-all duration-300 ease-in-out
+              hover:bg-gray-100 hover:shadow-md
+              focus:outline-none focus:ring-2 focus:ring-gray-300
+              ${selectedCategory === category.id
+                ? 'bg-gray-200 text-gray-800 shadow-md'
+                : 'bg-white text-gray-600 shadow-sm'
+              }
+              backdrop-filter backdrop-blur-sm bg-opacity-80
+            `}
+          >
+            {category.name}
+          </button>
+        ))}
       </div>
-      <div className={`${styles.grid} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4`}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 
