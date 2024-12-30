@@ -36,11 +36,12 @@ const CartCount = () => {
     position: 'absolute',
     top: '-10px',
     right: '-10px',
-    backgroundColor: 'red',
-    color: 'white',
-    borderRadius: '50%',
-    padding: '5px 10px',
-    fontSize: '10px',
+    backgroundColor: 'white',
+    color: 'black',
+    borderRadius: '100%',
+    padding: '2px 5px',
+    fontSize: '12px',
+    fontWeight:"bold",
   };
 
   return (

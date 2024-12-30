@@ -95,7 +95,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg"
+            className="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg z-10"
           >
             Item added to cart!
           </motion.div>
