@@ -7,9 +7,14 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { RootState } from '@/redux/store';
 import { useSelector } from 'react-redux';
 
+
 const CartCount = () => {
   const router = useRouter();
   const items = useSelector((state: RootState) => state.cart.items);
+  var quantiyNumbers : number = 0;
+  for(let i=0;i<items.length;i++){
+      quantiyNumbers += items[i].quantity;
+  }
 
   const navigateToCart = () => {
     router.push('/cart'); // Adjust the path based on your actual Cart Page route
@@ -49,7 +54,7 @@ const CartCount = () => {
       <div style={iconContainerStyle} onClick={navigateToCart}>
         <FontAwesomeIcon icon={faShoppingCart} style={iconStyle} />
         {/* Optional: Add a count badge if needed */}
-        <span style={countStyle}>{items.length}</span>
+        <span style={countStyle}>{quantiyNumbers}</span>
       </div>
     </div>
   );
