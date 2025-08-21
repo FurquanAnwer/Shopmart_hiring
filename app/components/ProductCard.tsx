@@ -81,7 +81,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
           <button 
             onClick={handleAddToCart} 
-            className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-2 rounded-md hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
+            className="w-full bg-slate-800 text-white py-2 rounded-md hove hover:bg-slate-950 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
           >
             <ShoppingCart className="w-5 h-5 mr-2" />
             Add to Cart

@@ -37,7 +37,7 @@ const CartPage = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <Toaster position="top-right" />
+      <Toaster position="bottom-right" />
       <h1 className="text-3xl font-bold mb-8 text-center">Your Shopping Cart</h1>
       {items.length === 0 ? (
         <div className="text-center text-gray-500">

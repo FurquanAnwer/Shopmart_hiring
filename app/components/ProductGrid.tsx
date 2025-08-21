@@ -42,8 +42,8 @@ const ProductGrid = () => {
   ]
 
   return (
-    <div className="container mx-auto px-4 m-2">
-      <div className="flex flex-wrap justify-center gap-2 mb-8">
+    <div className="container mx-auto p-2">
+      <div className="flex flex-wrap justify-center gap-2 m-5">
         {categories.map((category) => (
           <button
             key={category.id}
