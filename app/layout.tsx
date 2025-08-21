@@ -4,6 +4,10 @@ import "./globals.css";
 import NavBar from "./components/nav/NavBar";
 import Footer from "./components/Footer";
 import Providers from "../redux/providers";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
+
 
 const inter = Inter({ subsets: ["latin"] });
 

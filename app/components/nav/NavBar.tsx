@@ -7,8 +7,9 @@ import { Redressed } from 'next/font/google'
 import CartCount from '../CartCount'
 import { FaSearch, FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
+import { Dancing_Script } from "next/font/google";
 
-const redressed = Redressed({ subsets: ['latin'], weight: ["400"] })
+const dancing = Dancing_Script({ subsets: ["latin"], weight: "700" });
 
 const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -26,11 +27,11 @@ const NavBar = () => {
   }
 
   return (
-    <div className='sticky top-0 w-full bg-slate-200 z-30 shadow-sm'>
+    <div className='sticky top-0 w-full bg-slate-800 z-30 shadow-sm'>
       <div className='py-4 border-b-[1px]'>
         <Container>
           <div className='flex flex-wrap items-center justify-between gap-3 md:gap-0'>
-            <Link href="/" className={`${redressed.className} font-bold text-2xl md:text-4xl lg:text-6xl`}>
+            <Link href="/" className={`${dancing.className} font-extrabold text-2xl md:text-4xl lg:text-6xl text-white`}>
               ShopMart
             </Link>
             <div className='flex items-center gap-4 md:gap-8'>
@@ -40,15 +41,15 @@ const NavBar = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search products..."
-                  className='p-2 rounded-l-md'
+                  className='p-2 rounded-md'
                 />
-                <button type="submit" className='bg-blue-500 text-white p-2 rounded-r-md'>
+                <button type="submit" className='bg-white text-slate-950 p-2 rounded-md ml-2'>
                   <FaSearch />
                 </button>
               </form>
               <CartCount />
               <button className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <FaBars size={24} />
+                <FaBars size={24} className='text-white'/>
               </button>
             </div>
           </div>
