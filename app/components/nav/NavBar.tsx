@@ -16,8 +16,13 @@ const NavBar = () => {
   const router = useRouter()
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+    if(searchQuery){
+      e.preventDefault()
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+    }
+    else{
+      router.push('/')
+    }
   }
 
   return (
