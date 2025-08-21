@@ -61,9 +61,9 @@ const NavBar = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search products..."
-                  className='p-2 rounded-l-md flex-grow'
+                  className='p-2 rounded-md flex-grow'
                 />
-                <button type="submit" className='bg-blue-500 text-white p-2 rounded-r-md'>
+                <button type="submit" className='bg-white text-black p-2 rounded-md ml-1'>
                   <FaSearch />
                 </button>
               </form>
