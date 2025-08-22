@@ -76,12 +76,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="p-4 flex flex-col flex-grow">
           <h3 className="text-lg font-semibold mb-2 line-clamp-2 flex-grow">{product.title}</h3>
           <div className="flex justify-between items-center mb-4">
-            <p className="text-xl font-bold text-blue-600">${product.price.toFixed(2)}</p>
+            <p className="text-xl font-bold text-slate-800">${product.price.toFixed(2)}</p>
             <div className="flex">{renderStars(product.rating.rate)}</div>
           </div>
           <button 
             onClick={handleAddToCart} 
-            className="w-full bg-slate-800 text-white py-2 rounded-md hove hover:bg-slate-950 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
+            className="w-full bg-slate-800 text-white py-2 rounded-md hove hover:bg-slate-900 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
           >
             <ShoppingCart className="w-5 h-5 mr-2" />
             Add to Cart
@@ -142,12 +142,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
                   <p className="text-gray-600 mb-6 flex-grow">{product.description}</p>
                   <div className="flex justify-between items-center mb-6">
-                    <p className="text-3xl font-bold text-blue-600">${product.price.toFixed(2)}</p>
+                    <p className="text-3xl font-bold text-slate-800">${product.price.toFixed(2)}</p>
                     <div className="flex">{renderStars(product.rating.rate)}</div>
                   </div>
                   <button 
                     onClick={handleAddToCart} 
-                    className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-md hover:from-blue-600 hover:to-blue-700 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
+                    className="w-full  bg-slate-800 text-white py-3 rounded-md hover:bg-slate-900 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
                   >
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Add to Cart

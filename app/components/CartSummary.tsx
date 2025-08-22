@@ -42,14 +42,14 @@ const CartSummary: React.FC<CartSummaryProps> = ({ total, onCheckout, items }) =
         />
         <button
           onClick={applyCoupon}
-          className="mt-2 w-full bg-gray-200 text-gray-800 py-2 rounded hover:bg-gray-300 transition duration-200"
+          className="mt-2 w-full bg-slate-800 text-white py-2 rounded hover:bg-slate-900 transition duration-200"
         >
           Apply Coupon
         </button>
       </div>
       <button
         onClick={onCheckout}
-        className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200 flex items-center justify-center"
+        className="w-full bg-slate-800 text-white py-3 rounded-lg hover:bg-slate-900 transition duration-200 flex items-center justify-center"
       >
         <FaShoppingCart className="mr-2" />
         Proceed to Checkout

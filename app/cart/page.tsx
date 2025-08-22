@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import CartItems from '../components/CartItems';
 import CartSummary from '../components/CartSummary';
 import { Toaster } from 'react-hot-toast';
+import Link from "next/link"
 
 const CartPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -42,7 +43,7 @@ const CartPage = () => {
       {items.length === 0 ? (
         <div className="text-center text-gray-500">
           <p className="text-xl mb-4">Your cart is empty</p>
-          <a href="/" className="text-blue-500 hover:underline">Continue Shopping</a>
+          <Link href="/" className="text-blue-500 hover:underline">Continue Shopping</Link>
         </div>
       ) : (
         <div className="flex flex-col lg:flex-row gap-8">

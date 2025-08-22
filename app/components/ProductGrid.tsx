@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { fetchProducts } from '../../utils/api'
 import ProductCard from './ProductCard'
+import { SkeletonCard } from '../components/SkeletonCard'
 
 interface Product {
   id: number
@@ -20,12 +21,19 @@ interface Product {
 const ProductGrid = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [loading,setLoading] = useState(true)
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await fetchProducts()
-      setProducts(data)
-    }
+      try {
+          const data = await fetchProducts()
+          setProducts(data)
+      } catch (error) {
+        console.error("Failed to fetch products:", error)
+      } finally {
+        setLoading(false)   // stop loading after fetch
+      }
+    }    
     getProducts()
   }, [])
 
@@ -66,7 +74,9 @@ const ProductGrid = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
+          loading ?
+          <SkeletonCard/>:
+          <ProductCard key={product.id} product={product} />           
         ))}
       </div>
     </div>

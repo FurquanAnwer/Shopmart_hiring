@@ -41,7 +41,7 @@ const CartItems: React.FC<CartItemsProps> = ({ items, onRemove, onQuantityChange
             </div>
           </div>
           <button
-            className="text-red-500 hover:text-red-700"
+            className="text-slate-600 hover:text-slate-900"
             onClick={() => onRemove(item.id)}
           >
             <FaTrashAlt />
