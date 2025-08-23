@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { fetchProducts } from '../../utils/api'
 import ProductCard from './ProductCard'
 import { SkeletonCard } from '../components/SkeletonCard'
+import { Skeleton } from '@/components/ui/skeleton'
+import SkeletonGrid from './SkeletonGrid'
 
 interface Product {
   id: number
@@ -72,13 +74,17 @@ const ProductGrid = () => {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map(product => (
-          loading ?
-          <SkeletonCard/>:
+      {
+        loading ? 
+        <SkeletonGrid/> :
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {
+        filteredProducts.map(product => (
           <ProductCard key={product.id} product={product} />           
-        ))}
-      </div>
+        ))
+        }
+        </div>
+      }
     </div>
   )
 }
