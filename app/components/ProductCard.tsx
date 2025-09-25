@@ -3,9 +3,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../redux/cartSlice'
+import { addToWishList } from '@/redux/wishList'
 import { Star, ShoppingCart, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 interface Product {
   id: number
@@ -41,6 +44,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       />
     ))
   }
+
+    const handleAddToWishList = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    dispatch(
+      addToWishList({
+        id: String(product.id),
+        name: product.title,
+        price: product.price,
+        quantity: 1,
+        image: product.image,
+        rating: { rate: Number(product.rating.rate) },
+        description: String(product.description),
+      })
+    )
+    setShowNotification(true)
+    setTimeout(() => setShowNotification(false), 2000)
+  }
+
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -79,13 +100,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <p className="text-xl font-bold text-slate-800">${product.price.toFixed(2)}</p>
             <div className="flex">{renderStars(product.rating.rate)}</div>
           </div>
-          <button 
-            onClick={handleAddToCart} 
-            className="w-full bg-slate-800 text-white py-2 rounded-md hove hover:bg-slate-900 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
-          >
-            <ShoppingCart className="w-5 h-5 mr-2" />
-            Add to Cart
-          </button>
+          <div className='flex flex-row'>
+            <FontAwesomeIcon 
+              icon={faHeart} 
+              className=' text-2xl mr-1 text-center p-1 active:text-red-400'
+              onClick={handleAddToWishList}/>
+            <button 
+              onClick={handleAddToCart} 
+              className="w-full bg-slate-800 text-white py-2 rounded-md hove hover:bg-slate-900 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
+            >
+              <ShoppingCart className="w-5 h-5 mr-2" />
+              Add to Cart
+            </button>
+          </div>
         </div>
       </motion.div>
 
@@ -145,13 +172,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     <p className="text-3xl font-bold text-slate-800">${product.price.toFixed(2)}</p>
                     <div className="flex">{renderStars(product.rating.rate)}</div>
                   </div>
-                  <button 
-                    onClick={handleAddToCart} 
-                    className="w-full  bg-slate-800 text-white py-3 rounded-md hover:bg-slate-900 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
-                  >
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Add to Cart
-                  </button>
+                  <div className='flex flex-row'>
+                    <FontAwesomeIcon 
+                      icon={faHeart}
+                      className=' text-3xl mr-1 text-center p-1 active:text-red-400'
+                      onClick={handleAddToWishList}/>
+                    <button 
+                      onClick={handleAddToCart} 
+                      className="w-full  bg-slate-800 text-white py-3 rounded-md hover:bg-slate-900 transition-all duration-300 flex items-center justify-center transform hover:scale-105"
+                    >
+                      <ShoppingCart className="w-5 h-5 mr-2" />
+                      Add to Cart
+                    </button>
+                    
+                  </div>
                 </div>
               </div>
             </motion.div>
