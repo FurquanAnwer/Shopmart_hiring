@@ -8,6 +8,10 @@ import CartCount from '../CartCount'
 import { FaSearch, FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import { Dancing_Script } from "next/font/google";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+
+
 
 const dancing = Dancing_Script({ subsets: ["latin"], weight: "700" });
 
@@ -15,6 +19,10 @@ const NavBar = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const router = useRouter()
+
+  const navigateToWishList = () =>{
+    router.push('/wishlist')
+  }
 
   const handleSearch = (e: React.FormEvent) => {
     if(searchQuery){
@@ -48,6 +56,7 @@ const NavBar = () => {
                 </button>
               </form>
               <CartCount />
+              <FontAwesomeIcon icon={faHeart} className='text-white text-2xl cursor-pointer' onClick={navigateToWishList}/>
               <button className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <FaBars size={24} className='text-white'/>
               </button>
