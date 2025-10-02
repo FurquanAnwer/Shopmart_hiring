@@ -29,7 +29,8 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const dispatch = useDispatch()
   const [isExpanded, setIsExpanded] = useState(false)
-  const [showNotification, setShowNotification] = useState(false)
+  const [showNotificationForCart, setShowNotificationForCart] = useState(false)
+  const [showNotificationForWishlist, setShowNotificationForWishlist] = useState(false)
   const pathname = usePathname()
   const isPathname = pathname?.startsWith('/wishlist')
 
@@ -62,8 +63,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         description: String(product.description),
       })
     )
-    setShowNotification(true)
-    setTimeout(() => setShowNotification(false), 2000)
+    setShowNotificationForWishlist(true)
+    setTimeout(() => setShowNotificationForWishlist(false), 2000)
   }
 
   const handleRemoveFromWishlist = (e: React.MouseEvent) => {
@@ -93,8 +94,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         image: product.image,
       })
     )
-    setShowNotification(true)
-    setTimeout(() => setShowNotification(false), 2000)
+    setShowNotificationForCart(true)
+    setTimeout(() => setShowNotificationForCart(false), 2000)
     handleRemoveFromWishlist(e)
   }
 
@@ -157,16 +158,28 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </motion.div>
 
       <AnimatePresence>
-        {showNotification && (
+        {showNotificationForCart && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
-            className="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg z-10"
+            className="fixed bottom-4 right-4 bg-slate-800 text-white px-6 py-3 rounded-full shadow-lg z-10"
           >
             Item added to cart!
           </motion.div>
         )}
+        {showNotificationForWishlist && ( 
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-4 right-4 bg-slate-800 text-white px-6 py-3 rounded-full shadow-lg z-10"
+          >
+            Item added to wishlist!
+          </motion.div>
+        
+        )
+        }
       </AnimatePresence>
 
       <AnimatePresence>
