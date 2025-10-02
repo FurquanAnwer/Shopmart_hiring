@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface wishListItem {
     id: string;
-    name: string;
+    title: string;
     price: number;
     quantity: number;
     image: string;

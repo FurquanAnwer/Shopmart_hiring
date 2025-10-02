@@ -2,23 +2,22 @@
 
 import { useEffect, useState } from 'react'
 import { fetchProducts } from '../../utils/api'
+import { RootState, AppDispatch } from '../../redux/store';
+import { removeFromWishList } from '@/redux/wishList';
 import ProductCard from '../components/ProductCard'
 import { SkeletonCard } from '../components/SkeletonCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import SkeletonGrid from '../components/SkeletonGrid'
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link'
+import toast from 'react-hot-toast';
+
 
 const wishlist = () => {
   const dispatch = useDispatch<AppDispatch>();
   const items = useSelector((state: RootState) => state.wishList.items);
 
-  const handleRemove = (id: string) => {
-    dispatch(removeFromWishList(id));
-    toast.success("Item removed from cart");
-  };
 
-  debugger
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Your Wishlist has {items.length} items!</h1>

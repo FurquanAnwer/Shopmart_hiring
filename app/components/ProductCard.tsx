@@ -12,7 +12,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { usePathname } from 'next/navigation'
 
 interface Product {
-  id: number
+  id: string
   title: string
   price: number
   image: string
@@ -55,7 +55,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     dispatch(
       addToWishList({
         id: String(product.id),
-        name: product.title,
+        title: product.title,
         price: product.price,
         quantity: 1,
         image: product.image,
@@ -72,7 +72,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     dispatch(
       removeFromWishList({
         id: String(product.id),
-        name: product.title,
+        title: product.title,
         price: product.price,
         quantity: 1,
         image: product.image,

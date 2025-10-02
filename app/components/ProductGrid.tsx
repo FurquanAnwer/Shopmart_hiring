@@ -8,7 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import SkeletonGrid from './SkeletonGrid'
 
 interface Product {
-  id: number
+  id: string
   title: string
   price: number
   category: string
