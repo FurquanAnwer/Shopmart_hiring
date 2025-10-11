@@ -30,6 +30,7 @@ const NavBar = () => {
       router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
     }
     else{
+      e.preventDefault()
       router.push('/')
     }
   }
