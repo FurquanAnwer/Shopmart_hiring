@@ -43,19 +43,22 @@ const NavBar = () => {
             <Link href="/" className={`${dancing.className} font-extrabold text-2xl md:text-4xl lg:text-6xl text-white`}>
               ShopMart
             </Link>
-            <div className='flex items-center gap-4 md:gap-8'>
+              <div>
               <form onSubmit={handleSearch} className='hidden md:flex items-center'>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search products..."
-                  className='p-2 rounded-md'
+                  placeholder="Search for products, brands or categories..."
+                  className='p-2 rounded-sm w-[700px]'
                 />
-                <button type="submit" className='bg-white text-slate-950 p-2 rounded-md ml-2'>
+                <button type="submit" className='bg-white text-slate-950 p-2 rounded-sm ml-1 h-[40px] w-[40px] flex justify-center items-center'>
                   <FaSearch />
                 </button>
               </form>
+              </div>
+
+            <div className='flex items-center gap-4 md:gap-8'>
               <CartCount />
               <FontAwesomeIcon icon={faHeart} className='text-white text-2xl cursor-pointer' onClick={navigateToWishList}/>
               <button className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -73,7 +76,7 @@ const NavBar = () => {
                   placeholder="Search products..."
                   className='p-2 rounded-md flex-grow'
                 />
-                <button type="submit" className='bg-white text-black p-2 rounded-md ml-1'>
+                <button type="submit" className='bg-white text-black p-2 rounded-sm ml-1'>
                   <FaSearch />
                 </button>
               </form>
