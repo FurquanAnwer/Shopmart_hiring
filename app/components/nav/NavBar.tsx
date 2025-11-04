@@ -58,12 +58,12 @@ const NavBar = () => {
               </form>
               </div>
 
-            <div className='flex items-center gap-4 md:gap-8'>
-              <CartCount />
+            <div className='flex items-center gap-3 md:gap-5'>
               <FontAwesomeIcon icon={faHeart} className='text-white text-2xl cursor-pointer' onClick={navigateToWishList}/>
               <button className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <FaBars size={24} className='text-white'/>
               </button>
+              <CartCount />
             </div>
           </div>
           {isMenuOpen && (

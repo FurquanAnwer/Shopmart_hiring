@@ -6,6 +6,7 @@ import ProductCard from './ProductCard'
 import { SkeletonCard } from '../components/SkeletonCard'
 import { Skeleton } from '@/components/ui/skeleton'
 import SkeletonGrid from './SkeletonGrid'
+import CarouselComponent from './Carousel'
 
 interface Product {
   id: string
@@ -52,7 +53,10 @@ const ProductGrid = () => {
   ]
 
   return (
-    <div className="container mx-auto p-2">
+    <div className="container mx-auto p-2 flex flex-col gap-2">
+      <div className='flex items-center justify-center m-3'>
+        <CarouselComponent/>
+      </div>      
       <div className="flex flex-wrap justify-center gap-2 m-5">
         {categories.map((category) => (
           <button
@@ -74,17 +78,19 @@ const ProductGrid = () => {
           </button>
         ))}
       </div>
+      <div className='mt-2'>
       {
         loading ? 
         <SkeletonGrid/> :
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {
-        filteredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />           
-        ))
-        }
+          {
+          filteredProducts.map(product => (
+            <ProductCard key={product.id} product={product} />           
+          ))
+          }
         </div>
       }
+      </div>
     </div>
   )
 }
