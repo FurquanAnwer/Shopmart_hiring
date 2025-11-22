@@ -12,8 +12,8 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "E-commerce App",
-  description: "Created by Furquan Anwer",
+  title: "ShopMart",
+  description: "E-Commerce App by created by Furquan Anwer",
 };
 
 export default function RootLayout({
