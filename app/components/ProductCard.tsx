@@ -33,6 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [showNotificationForWishlist, setShowNotificationForWishlist] = useState(false)
   const pathname = usePathname()
   const isPathname = pathname?.startsWith('/wishlist')
+  const [colorFill,setColorFill] = useState(false)
 
 
   const toggleExpand = () => {
@@ -63,6 +64,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         description: String(product.description),
       })
     )
+    setColorFill(true)
     setShowNotificationForWishlist(true)
     setTimeout(() => setShowNotificationForWishlist(false), 2000)
   }
@@ -142,7 +144,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <div className='flex flex-row'>
               <FontAwesomeIcon 
               icon={faHeart} 
-              className=' text-2xl mr-1 text-center p-1 active:text-red-400'
+              className={`text-2xl mr-1 text-center p-1 ${colorFill ? 'text-red-700':''}`}
               onClick={handleAddToWishList}/>
               <button 
                 onClick={handleAddToCart} 
