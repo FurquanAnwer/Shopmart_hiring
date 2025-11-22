@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from 'react'
-import Container from '../Container'
+import Container from './Container'
 import Link from 'next/link'
 import { Redressed } from 'next/font/google'
-import CartCount from '../CartCount'
+import CartCount from './CartCount'
 import { FaSearch, FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import { Dancing_Script } from "next/font/google";
