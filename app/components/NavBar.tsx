@@ -39,31 +39,32 @@ const NavBar = () => {
     <div className='sticky top-0 w-full bg-slate-800 z-30 shadow-sm'>
       <div className='py-4 border-b-[1px]'>
         <Container>
-          <div className='flex flex-wrap items-center justify-between gap-3 md:gap-0'>
-            <Link href="/" className={`${dancing.className} font-extrabold text-2xl md:text-4xl lg:text-6xl text-white`}>
+          <div className='flex flex-wrap items-center justify-between md:gap-0'>
+            <Link href="/" className={`${dancing.className} font-extrabold text-3xl md:text-4xl lg:text-6xl text-white`}>
               ShopMart
             </Link>
-              <div>
+
+            <div>
               <form onSubmit={handleSearch} className='hidden md:flex items-center'>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search for products, brands or categories..."
-                  className='p-2 rounded-sm w-[700px]'
+                  className='p-2 rounded-sm md:w-[300px] lg:w-[450px] xl:w-[600px] 2xl:w-[800px]'
                 />
                 <button type="submit" className='bg-white text-slate-950 p-2 rounded-sm ml-1 h-[40px] w-[40px] flex justify-center items-center'>
                   <FaSearch />
                 </button>
               </form>
-              </div>
+            </div>
 
             <div className='flex items-center gap-3 md:gap-5'>
               <FontAwesomeIcon icon={faHeart} className='text-white text-2xl cursor-pointer' onClick={navigateToWishList}/>
+              <CartCount />
               <button className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 <FaBars size={24} className='text-white'/>
-              </button>
-              <CartCount />
+              </button>                         
             </div>
           </div>
           {isMenuOpen && (
