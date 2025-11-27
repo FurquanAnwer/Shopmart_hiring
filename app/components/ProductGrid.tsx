@@ -78,7 +78,7 @@ const ProductGrid = () => {
           </button>
         ))}
       </div>
-      <div className='mt-2'>
+      <div className='mt-2 flex flex-col items-center justify-center'>
       {
         loading ? 
         <SkeletonGrid/> :
