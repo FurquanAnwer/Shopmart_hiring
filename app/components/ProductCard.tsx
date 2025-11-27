@@ -230,7 +230,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   <div className='flex flex-row'>
                     <FontAwesomeIcon 
                       icon={faHeart}
-                      className=' text-3xl mr-1 text-center p-1 active:text-red-400'
+                      className={`text-3xl mr-1 text-center p-1 ${colorFill ? 'text-red-700':''}`}
                       onClick={handleAddToWishList}/>
                     <button 
                       onClick={handleAddToCart} 
